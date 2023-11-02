@@ -2,26 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  overflow-x: hidden;
+}
+
+.linear-bg{
+  background: linear-gradient(139deg, #5C6670 2.33%, #131316 96.28%);
+}
+
+.bg_effect {
+  background: #EFF1F6;
+  opacity: 0.6;
+  filter: blur(0.4);
+}
+
+
+/* ************ calendar **************** */
+
+.input-picker > .input-picker--input {
+  padding: 18px 12px !important;
+  text-align: left !important;
+  font-family: 'degular', 'inter', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+.input-picker > .input-picker--input:focus {
+  background-color: white !important;
+  border: solid 2px #131316 !important;
+}
+
+.is-ltr > div.header {
+  background-color: white;
+}
+
+.header-date{
+  color: black !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+.header--btn{
+  color: black !important;
+  width: 10px !important;
+  margin-top: 10px !important;
+}
+
+.calender-modal {
+  margin-top: 5px !important;
+  padding: 12px !important;
+  width: 22.5rem !important;
+  border-radius: 12px !important;
+}
+
+.react-calendar-datetime-picker .daysList .daysList-day{
+  font-weight: 600 !important;
+  font-size: small !important;
+  color: #131316  !important;
+}
+
+.react-calendar-datetime-picker .daysList .is-selected-day {
+  background: #131316 !important;
+  color: white !important;
+  border: none !important;
+  border: transparent !important;
+}
+
+.react-calendar-datetime-picker .daysList .is-today {
+  box-shadow: inset 0 0 0 2px black !important;
+  background: #131316 !important;
+  color: white !important;
+}
+
+ul.daysList > li.daysList-day.is-disabled.is-next-month{
+  color: transparent !important;
+  background-color: transparent !important;
+}
+
+ul.daysList > li.daysList-day.is-disabled.is-prev-month{
+  color: transparent !important;
+  background-color: transparent !important;
 }
