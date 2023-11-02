@@ -8,6 +8,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        'slide-in-right': 'slide-in-right 0.5s ease-in-out',
+      },
+      keyframes: {
+        'slide-in-right': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

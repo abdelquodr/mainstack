@@ -2,7 +2,7 @@ import { NavIcon } from '@/components'
 
 export default function Button(props) {
 
-  const {icon=null, label='', className='', type='', isDisabled=false} = props
+  const {icon=null, label='', className='', type=''} = props
   if (icon === null && label === null) {
     throw new Error('Both icon and label cannot be null');
   }
@@ -18,7 +18,7 @@ export default function Button(props) {
   `;
 
   return (
-    <button  {...props} className={buttonClassName} disabled={isDisabled }>
+    <button  {...props} className={buttonClassName}>
       {icon && <NavIcon icon={icon} /> } 
       <span className='align-baseline pt-1'>{ label }</span>
     </button>

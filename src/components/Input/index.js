@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Checkbox } from '@/components'
 import { useAppState } from '@/State/AppState';
+import Image from 'next/image';
 
 
 export default function Input({header, labels, type}) {
@@ -35,12 +36,8 @@ export default function Input({header, labels, type}) {
           <div className={`my-2 bg-grey-light p-1 flex rounded-md ${ openSelect && 'bg-white border-2 border-grey-solid' }`}>
             <div className='flex flex-auto flex-wrap'></div>
             <input onChange={handleOnChange} onFocus={handleOnFocus} value={checkedValue.join(',')} className={`p-1 px-2 appearance-none bg-grey-light  outline-none w-full font-semibold text-grey-solid text-xs ${ openSelect && 'bg-white border-grey-solid' }`} />
-            <div className='text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200'>
-              <button className='cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' >
-                  <polyline points="18 15 12 9 6 15"></polyline>
-                </svg>
-              </button>
+            <div className='text-gray-300 w-8 py-1 pl-2 pr-1 flex items-center border-gray-200'>
+                { openSelect ?  <Image src={'../assets/expand_less.svg'} alt='expand_less' width={20} height={20} /> : <Image src={'../assets/expand_more.svg'} alt='expand_more' width={20} height={20} /> }
             </div>
           </div>
         </div>
