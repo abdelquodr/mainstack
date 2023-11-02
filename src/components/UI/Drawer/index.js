@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react';
 import Image from 'next/image'
 import { Input, Button, DatePicker } from '@/components'
@@ -11,13 +13,11 @@ const labelsData= {
 }
 
 const MemoizedDraw = React.memo(Draw);
-const drawerRoot = document.createElement('div');
-document.body.appendChild(drawerRoot);
 export default function Drawer({ closeDrawer, isActive }) {
   return (
     createPortal(
       <MemoizedDraw closeDrawer={ closeDrawer } isActive={isActive} />,
-      drawerRoot
+      typeof window !== "undefined" && document.body
     )
   )
 }
@@ -28,7 +28,7 @@ function Draw({ closeDrawer, isActive }) {
   const isFormData = filterFormDataType.length > 0 && filterFormDataStatus.length > 0 
 
   return (
-    <div className={`ease-out duration-500 transition-all slide-in-right w-full z-20 bg h-full fixed ${!isActive && 'hidden' }`}>
+    <div className={`ease-out duration-500 transition-all  w-full z-20 bg h-full fixed ${!isActive && 'hidden' }`}>
       <div className='float-right relative ease-out transition-all w-[25rem] h-[96%] rounded-xl shadow-md bg-white z-50 px-5 py-5 m-4'>
         <div className='flex justify-between'>
           <h5 className='font-bold text-1xl'>Filter</h5>
