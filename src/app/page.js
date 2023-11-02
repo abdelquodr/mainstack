@@ -1,4 +1,5 @@
 "use client"
+
 import { useState, useEffect, useCallback } from 'react';
 import { Navbar, Table, Chart, Drawer, Sidebar } from '@/components/UI'
 import { AppStateProvider } from '@/State/AppState';

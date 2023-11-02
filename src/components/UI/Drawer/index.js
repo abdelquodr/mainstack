@@ -13,11 +13,16 @@ const labelsData= {
 }
 
 const MemoizedDraw = React.memo(Draw);
+
+function checkDocumentBody() {
+  return typeof document !== "undefined" && document?.body;
+}
 export default function Drawer({ closeDrawer, isActive }) {
+  
   return (
     createPortal(
       <MemoizedDraw closeDrawer={ closeDrawer } isActive={isActive} />,
-      typeof window !== "undefined" && document.body
+      checkDocumentBody()
     )
   )
 }
