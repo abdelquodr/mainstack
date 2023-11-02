@@ -11,11 +11,13 @@ const labelsData= {
 }
 
 const MemoizedDraw = React.memo(Draw);
+const drawerRoot = document.createElement('div');
+document.body.appendChild(drawerRoot);
 export default function Drawer({ closeDrawer, isActive }) {
   return (
     createPortal(
       <MemoizedDraw closeDrawer={ closeDrawer } isActive={isActive} />,
-      document.body
+      drawerRoot
     )
   )
 }
