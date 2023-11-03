@@ -1,3 +1,5 @@
+'use client'
+import React from 'react';
 import Image from 'next/image'
 import { Input, Button, DatePicker } from '@/components'
 import { createPortal } from 'react-dom';
@@ -9,11 +11,21 @@ const labelsData= {
   status: ['Successful', 'Pending','Failed']
 }
 
+const MemoizedDraw = React.memo(Draw);
+function checkDocumentBody() {
+  return typeof document !== "undefined" && document?.body;
+}
+
 export default function Drawer({ closeDrawer, isActive }) {
+
+  if (typeof window === 'undefined') {
+    return null; // Return null on the server to avoid calling createPortal
+  }
+
   return (
     createPortal(
-      <Draw closeDrawer={ closeDrawer } isActive={isActive} />,
-      document.body
+      <MemoizedDraw closeDrawer={ closeDrawer } isActive={isActive} />,
+      checkDocumentBody()
     )
   )
 }
@@ -23,7 +35,6 @@ function Draw({ closeDrawer, isActive }) {
   const { state: { filterFormDataType, filterFormDataStatus  } } = useAppState();
   const isFormData = filterFormDataType.length > 0 && filterFormDataStatus.length > 0 
 
-  console.log(isFormData, '================================' )
   return (
     <div className={`ease-out duration-500 transition-all w-full z-20 bg h-full fixed ${!isActive && 'hidden' }`}>
       <div className='float-right relative ease-out transition-all w-[25rem] h-[96%] rounded-xl shadow-md bg-white z-50 px-5 py-5 m-4'>
@@ -41,7 +52,7 @@ function Draw({ closeDrawer, isActive }) {
           <Button label='Last 3 months' type='outlined' className='px-3 py-2 whitespace-nowrap text-xs font-normal' />
         </div>
 
-        <form>
+        <div>
           <div className='pb-3'>
             <h5 className='text-sm text-left text-grey-solid font-degular font-bold py-1'>Date Range</h5>
             <div className='flex space-x-2'>
@@ -52,10 +63,10 @@ function Draw({ closeDrawer, isActive }) {
           <Input header='Transaction Type' labels={labelsData?.type} type='type' />
           <Input header='Transaction Status' labels={labelsData?.status} type='status' />
           <div className='flex justify-between px-5 absolute inset-x-0 bottom-5'>
-            <Button label='Clear' type='outlined' className={`px-16 py-3 ${isFormData ? 'cursor-pointer' : 'cursor-not-allowed  opacity-50' } `} isDisabled={ !isFormData && true} />
-            <Button label='Apply' type='solid' className={`px-16 py-3 ${isFormData ? 'cursor-pointer' : 'cursor-not-allowed opacity-50' } `} isDisabled={ !isFormData && true}  />
+            <Button label='Clear' type='outlined' className={`px-16 py-3 ${isFormData ? 'cursor-pointer' : 'cursor-not-allowed  opacity-50' } `}  />
+            <Button label='Apply' type='solid' className={`px-16 py-3 ${isFormData ? 'cursor-pointer' : 'cursor-not-allowed opacity-50' } `}   />
           </div>
-        </form>      
+        </div>      
       </div> 
     </div>
   )
