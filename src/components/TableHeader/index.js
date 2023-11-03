@@ -1,5 +1,4 @@
 import { Button } from '@/components'
-import PropTypes from'prop-types'
 
 export default function TableHeader({transactions, desc, openDrawer}) {
   return (
@@ -16,10 +15,3 @@ export default function TableHeader({transactions, desc, openDrawer}) {
     </div>
   )
 }
-
-
-// TableHeader.propTypes = {
-//   transactions: PropTypes.string.isRequired,
-//   desc: PropTypes.string.isRequired,
-//   openDrawer: PropTypes.func.isOptional
-// };

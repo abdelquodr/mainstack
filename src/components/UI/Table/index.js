@@ -1,4 +1,4 @@
-import { Button, NavIcon, TableHeader, TableData } from '@/components'
+import { TableHeader, TableData } from '@/components'
 
 export default function Table({openDrawer}) {
   return (
