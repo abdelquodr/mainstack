@@ -3,7 +3,7 @@ import { ReactiveImage } from '@/components'
 
 const sidebarData = [
     {
-      icon: 'product-1',
+      icon: 'Product-1',
       desc: 'Link in Bio'
     },
     {
@@ -15,7 +15,7 @@ const sidebarData = [
       desc: 'Media kit'
     },
     {
-      icon: 'product-2',
+      icon: 'Product-2',
       desc: 'Invoicing'
     }
   ]
